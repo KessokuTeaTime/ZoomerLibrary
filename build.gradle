@@ -1,13 +1,20 @@
 plugins {
+	id "dev.architectury.loom" version "1.1-SNAPSHOT"
+	id "io.github.juuxel.loom-quiltflower" version "1.10.+"
 	id 'maven-publish'
-	alias libs.plugins.quilt.loom
 }
 
 archivesBaseName = project.archives_base_name
-version = System.env.GITHUB_ACTIONS == 'true'
-	? "$project.version+${libs.versions.minecraft.get()}.github.$System.env.GITHUB_RUN_NUMBER"
-	: "$project.version+${libs.versions.minecraft.get()}"
+version = "${project.mod_version}+${project.minecraft_version}"
 group = project.maven_group
+
+loom {
+	forge {
+		mixinConfigs = [
+		    "libzoomer.mixins.json"
+		]
+	}
+}
 
 sourceSets {
 	testmod {
@@ -16,16 +23,14 @@ sourceSets {
 	}
 }
 
-// All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
-// See https://docs.gradle.org/current/userguide/platforms.html for information on how version catalogs work.
-dependencies {
-	minecraft libs.minecraft
-	mappings variantOf(libs.quilt.mappings) { classifier 'intermediary-v2' }
-	modImplementation libs.quilt.loader
+repositories {
+	maven { url "https://maven.quiltmc.org/repository/release" }
+}
 
-	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
-	// Quilted Fabric API will automatically pull in the correct QSL version.
-	modImplementation libs.quilted.fabric.api
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "org.quiltmc:quilt-mappings:${quilt_mappings}:intermediary-v2"
+	forge "net.minecraftforge:forge:${project.forge_version}"
 
 	afterEvaluate {
 		testmodImplementation sourceSets.main.output
@@ -52,21 +57,14 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = 'UTF-8'
-	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
 	it.options.release = 17
 }
 
 java {
-	// Still required by IDEs such as Eclipse and Visual Studio Code
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task if it is present.
-	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	// If this mod is going to be a library, then it should also generate Javadocs in order to aid with developement.
-	// Uncomment this line to generate them.
 	withJavadocJar()
 }
 
@@ -81,29 +79,6 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
-
-			pom {
-				name = 'LibZoomer'
-				description = 'A library that allows other Minecraft mods to have powerful zooming easily.'
-				url = 'https://github.com/EnnuiL/LibZoomer'
-				licenses {
-					license {
-						name = 'The MIT License'
-						url = 'https://opensource.org/licenses/MIT'
-					}
-				}
-				developers {
-					developer {
-						id = 'EnnuiL'
-						name = 'Ennui Langeweile'
-					}
-				}
-				scm {
-					connection = 'scm:git:https://github.com/EnnuiL/LibZoomer.git'
-					developerConnection = 'scm:git:git@github.com:EnnuiL/LibZoomer.git'
-					url = 'https://github.com/EnnuiL/LibZoomer'
-				}
-			}
 		}
 	}
 

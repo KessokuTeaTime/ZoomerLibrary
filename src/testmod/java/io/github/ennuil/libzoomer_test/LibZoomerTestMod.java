@@ -1,11 +1,14 @@
 package io.github.ennuil.libzoomer_test;
 
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.lwjgl.glfw.GLFW;
-import org.quiltmc.loader.api.ModContainer;
-import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
-import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
-import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
-import org.quiltmc.qsl.lifecycle.api.client.event.ClientTickEvents;
 
 import io.github.ennuil.libzoomer.api.ZoomInstance;
 import io.github.ennuil.libzoomer.api.ZoomRegistry;
@@ -14,7 +17,7 @@ import io.github.ennuil.libzoomer.api.modifiers.SpyglassMouseModifier;
 import io.github.ennuil.libzoomer.api.overlays.SpyglassZoomOverlay;
 import io.github.ennuil.libzoomer.api.transitions.InstantTransitionMode;
 import io.github.ennuil.libzoomer.api.transitions.SmoothTransitionMode;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBind;
 import net.minecraft.item.Item;
@@ -23,7 +26,17 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class LibZoomerTestMod implements ModInitializer, ClientModInitializer, ClientTickEvents.End {
+@Mod(LibZoomerTestMod.MODID)
+public class LibZoomerTestMod {
+	public static final String MODID = "libzoomer_test";
+
+	public LibZoomerTestMod() {
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+		modEventBus.addListener(this::onInitialize);
+		modEventBus.addListener(this::onInitializeClient);
+	}
+
 	// Michael's Zoom Instance
 	private static final ZoomInstance MICHAEL_ZOOM = new ZoomInstance(
 		new Identifier("libzoomer_test:zoom"),
@@ -41,7 +54,7 @@ public class LibZoomerTestMod implements ModInitializer, ClientModInitializer, C
 	);
 
 	// Michael. He's a reimplementation of the spyglass. Tests if the spyglass can be replicated.
-	private static final Item MICHAEL_ITEM = new SpyglassItem(new QuiltItemSettings().maxCount(1));
+	private static final Item MICHAEL_ITEM = new SpyglassItem(new Item.Settings().maxCount(1));
 
 	// Michelle. She's an implementation of a very simple zoom key. Tests if there are zoom instance conflicts and spyglass-unrelated things.
 	private static final KeyBind MICHELLE_KEY = new KeyBind(
@@ -50,24 +63,33 @@ public class LibZoomerTestMod implements ModInitializer, ClientModInitializer, C
 		"key.libzoomer_test.category"
 	);
 
-	@Override
-	public void onInitialize(ModContainer mod) {
+	public void onInitialize(FMLCommonSetupEvent event) {
 		// Register the Michael item
 		Registry.register(Registries.ITEM, new Identifier("libzoomer_test:michael"), MICHAEL_ITEM);
 	}
 
-	@Override
-	public void onInitializeClient(ModContainer mod) {
+	public void onInitializeClient(FMLClientSetupEvent event) {
 		// This prints out all zoom instances registered so far and some extra info
 		for (ZoomInstance instance : ZoomRegistry.getZoomInstances()) {
 			System.out.println("Id: " + instance.getInstanceId() + " | Zooming: " + instance.getZoom() + " | Divisor: " + instance.getZoomDivisor());
 		}
 
-		KeyBindingHelper.registerKeyBinding(MICHELLE_KEY);
+		//KeyBindingHelper.registerKeyBinding(MICHELLE_KEY);
 	}
 
-	@Override
-	public void endClientTick(MinecraftClient client) {
+	@SubscribeEvent
+	public void registerKeys(final RegisterKeyMappingsEvent event) {
+		event.register(MICHELLE_KEY);
+	}
+
+	@SubscribeEvent
+	public void endClientTick(TickEvent.ClientTickEvent event) {
+		if (event.phase != TickEvent.ClientTickEvent.Phase.END && MinecraftClient.getInstance().world == null) {
+			return;
+		}
+
+		MinecraftClient client = MinecraftClient.getInstance();
+
 		// This is how you get a spyglass-like zoom working
 		if (client.player == null) return;
 
