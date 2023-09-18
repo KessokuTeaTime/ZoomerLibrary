@@ -26,7 +26,7 @@ side = "BOTH"
 [[dependencies.zoomerlibrary_test]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.3,1.19.4]"
+versionRange = "[1.19.4,]"
 ordering = "NONE"
 side = "BOTH"
 
