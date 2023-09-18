@@ -22,8 +22,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBind;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpyglassItem;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.Identifier;
 
 @Mod(ZoomerLibraryTestMod.MODID)
@@ -65,7 +64,7 @@ public class ZoomerLibraryTestMod {
 
 	public void onInitialize(FMLCommonSetupEvent event) {
 		// Register the Michael item
-		Registry.register(Registries.ITEM, new Identifier("libzoomer_test:michael"), MICHAEL_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("libzoomer_test:michael"), MICHAEL_ITEM);
 	}
 
 	public void onInitializeClient(FMLClientSetupEvent event) {
