@@ -1,9 +1,10 @@
 package io.github.ennuil.libzoomer.api.overlays;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.ennuil.libzoomer.api.ZoomOverlay;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
@@ -45,9 +46,11 @@ public class SpyglassZoomOverlay implements ZoomOverlay {
     }
 
     @Override
-    public void renderOverlay(GuiGraphics graphics) {
-        int scaledWidth = graphics.getScaledWindowWidth();
-        int scaledHeight = graphics.getScaledWindowHeight();
+    public void renderOverlay(MatrixStack matrices) {
+        int scaledWidth = this.client.getWindow().getScaledWidth();
+        int scaledHeight = this.client.getWindow().getScaledHeight();
+		RenderSystem.disableDepthTest();
+		RenderSystem.depthMask(false);
 		float f = (float) Math.min(scaledWidth, scaledHeight);
 		float h = Math.min((float) scaledWidth / f, (float) scaledHeight / f) * scale;
 		int i = MathHelper.floor(f * h);
@@ -56,11 +59,14 @@ public class SpyglassZoomOverlay implements ZoomOverlay {
 		int l = (scaledHeight - j) / 2;
 		int m = k + i;
 		int n = l + j;
-		graphics.drawTexture(textureId, k, l, -90, 0.0F, 0.0F, i, j, i, j);
-		graphics.fill(RenderLayer.getGuiOverlay(), 0, n, scaledWidth, scaledHeight, -90, 0xFF000000);
-		graphics.fill(RenderLayer.getGuiOverlay(), 0, 0, scaledWidth, l, -90, 0xFF000000);
-		graphics.fill(RenderLayer.getGuiOverlay(), 0, l, k, n, -90, 0xFF000000);
-		graphics.fill(RenderLayer.getGuiOverlay(), m, l, scaledWidth, n, -90, 0xFF000000);
+		RenderSystem.setShaderTexture(0, this.textureId);
+		DrawableHelper.drawTexture(matrices, k, l, -90, 0.0F, 0.0F, i, j, i, j);
+		DrawableHelper.fill(matrices, 0, n, scaledWidth, scaledHeight, -90, 0xFF000000);
+		DrawableHelper.fill(matrices, 0, 0, scaledWidth, l, -90, 0xFF000000);
+		DrawableHelper.fill(matrices, 0, l, k, n, -90, 0xFF000000);
+		DrawableHelper.fill(matrices, m, l, scaledWidth, n, -90, 0xFF000000);
+		RenderSystem.depthMask(true);
+		RenderSystem.enableDepthTest();
     }
 
     @Override

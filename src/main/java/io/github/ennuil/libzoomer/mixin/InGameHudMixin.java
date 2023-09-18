@@ -10,7 +10,7 @@ import io.github.ennuil.libzoomer.api.ZoomInstance;
 import io.github.ennuil.libzoomer.api.ZoomOverlay;
 import io.github.ennuil.libzoomer.api.ZoomRegistry;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.gui.hud.InGameHud;
 
 @Mixin(InGameHud.class)
@@ -19,13 +19,13 @@ public class InGameHudMixin {
 	private boolean shouldCancelOverlay = false;
 
 	@Inject(
-		method = "render(Lnet/minecraft/client/gui/GuiGraphics;F)V",
+		method = "render",
 		at = @At(
 			value = "INVOKE",
 			target = "net/minecraft/client/MinecraftClient.getLastFrameDuration()F"
 		)
 	)
-	public void injectZoomOverlay(GuiGraphics graphics, float tickDelta, CallbackInfo ci) {
+	public void injectZoomOverlay(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
 		this.shouldCancelOverlay = false;
 		for (ZoomInstance instance : ZoomRegistry.getZoomInstances()) {
 			ZoomOverlay overlay = instance.getZoomOverlay();
@@ -33,7 +33,7 @@ public class InGameHudMixin {
 				overlay.tickBeforeRender();
 				if (overlay.getActive()) {
 					this.shouldCancelOverlay = overlay.cancelOverlayRendering();
-					overlay.renderOverlay(graphics);
+					overlay.renderOverlay(matrices);
 				}
 			}
 		}
@@ -51,13 +51,13 @@ public class InGameHudMixin {
 
 	// ...which is why we set cancelOverlayRender to false before that!
 	@Inject(
-		method = "render(Lnet/minecraft/client/gui/GuiGraphics;F)V",
+		method = "render",
 		at = @At(
 			value = "INVOKE",
 			target = "net/minecraft/client/network/ClientPlayerEntity.getFrozenTicks()I"
 		)
 	)
-	public void disableOverlayCancelling(GuiGraphics graphics, float tickDelta, CallbackInfo ci) {
+	public void disableOverlayCancelling(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
 		if (this.shouldCancelOverlay) {
 			this.shouldCancelOverlay = false;
 		}
