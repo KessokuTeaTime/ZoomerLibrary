@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[41,)"
+loaderVersion = "[38,)"
 license = "MIT"
 
 [[mods]]
@@ -19,13 +19,13 @@ A library that allows for easy and powerful zooming.
 [[dependencies.zoomerlibrary]]
 modId = "forge"
 mandatory = true
-versionRange = "[41,)"
+versionRange = "[38,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.zoomerlibrary]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19,1.19.2]"
+versionRange = "[1.18,1.18.2]"
 ordering = "NONE"
 side = "BOTH"

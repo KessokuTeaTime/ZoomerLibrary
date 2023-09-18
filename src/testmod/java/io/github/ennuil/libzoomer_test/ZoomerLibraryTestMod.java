@@ -1,6 +1,6 @@
 package io.github.ennuil.libzoomer_test;
 
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -73,12 +73,8 @@ public class ZoomerLibraryTestMod {
 			System.out.println("Id: " + instance.getInstanceId() + " | Zooming: " + instance.getZoom() + " | Divisor: " + instance.getZoomDivisor());
 		}
 
+		ClientRegistry.registerKeyBinding(MICHELLE_KEY);
 		//KeyBindingHelper.registerKeyBinding(MICHELLE_KEY);
-	}
-
-	@SubscribeEvent
-	public void registerKeys(RegisterKeyMappingsEvent event) {
-		event.register(MICHELLE_KEY);
 	}
 
 	@SubscribeEvent

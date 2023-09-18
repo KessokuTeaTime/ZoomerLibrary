@@ -1,5 +1,6 @@
 package io.github.ennuil.libzoomer.mixin;
 
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,7 +28,8 @@ public abstract class MouseMixin {
 		method = "updateLookDirection()V",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/client/option/GameOptions;getInvertYMouse()Lnet/minecraft/client/option/Option;"
+			target = "net/minecraft/client/option/GameOptions.invertYMouse:Z",
+			opcode = Opcodes.GETFIELD
 		),
 		locals = LocalCapture.CAPTURE_FAILHARD
 	)
@@ -56,7 +58,8 @@ public abstract class MouseMixin {
 		method = "updateLookDirection()V",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/client/option/GameOptions;getInvertYMouse()Lnet/minecraft/client/option/Option;"
+			target = "net/minecraft/client/option/GameOptions.invertYMouse:Z",
+			opcode = Opcodes.GETFIELD
 		),
 		ordinal = 2
 	)
@@ -68,7 +71,8 @@ public abstract class MouseMixin {
 		method = "updateLookDirection()V",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/client/option/GameOptions;getInvertYMouse()Lnet/minecraft/client/option/Option;"
+			target = "net/minecraft/client/option/GameOptions.invertYMouse:Z",
+			opcode = Opcodes.GETFIELD
 		),
 		ordinal = 3
 	)
