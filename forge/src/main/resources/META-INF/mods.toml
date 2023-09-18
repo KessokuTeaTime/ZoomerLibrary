@@ -1,0 +1,37 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "zoomerlibrary"
+version = "${version}"
+displayName = "ZoomerLibrary"
+displayURL = "https://github.com/ThinkingStudios/ZoomerLibrary"
+authors = "ThinkingStudio, TexTrue"
+credits = "Ennui Langeweile"
+description = '''
+A library that allows for easy and powerful zooming.
+'''
+logoFile = "icon.png"
+
+[[dependencies.zoomerlibrary]]
+modId = "forge"
+mandatory = true
+versionRange = "[46,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.zoomerlibrary]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.zoomerlibrary]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9,)"
+ordering = "AFTER"
+side = "BOTH"

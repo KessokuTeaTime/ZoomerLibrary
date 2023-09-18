@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "org.thinkingstudio.zoomerlibrary.mixin",
+	"minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "GameRendererMixin",
+    "InGameHudMixin",
+    "ModelPredicateProviderRegistryMixin",
+    "MouseMixin",
+    "PlayerHeldItemFeatureRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

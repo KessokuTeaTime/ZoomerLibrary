@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "zoomerlibrary",
+  "version": "${version}",
+  "name": "ZoomerLibrary",
+  "description": "A library that allows for easy and powerful zooming.",
+  "authors": [
+    "ThinkingStudio", "TexTrue", "Ennui Langeweile"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ThinkingStudios/ZoomerLibrary",
+    "sources": "https://github.com/ThinkingStudios/ZoomerLibrary"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "org.thinkingstudio.zoomerlibrary.fabric.ZoomerLibraryFabric"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": "1.20.x",
+    "architectury": "*"
+  }
+}
