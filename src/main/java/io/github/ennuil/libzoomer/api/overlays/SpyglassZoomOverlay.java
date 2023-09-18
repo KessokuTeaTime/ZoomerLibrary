@@ -61,10 +61,10 @@ public class SpyglassZoomOverlay implements ZoomOverlay {
 		int n = l + j;
 		RenderSystem.setShaderTexture(0, this.textureId);
 		DrawableHelper.drawTexture(matrices, k, l, -90, 0.0F, 0.0F, i, j, i, j);
-		DrawableHelper.fill(matrices, 0, n, scaledWidth, scaledHeight, -90, 0xFF000000);
-		DrawableHelper.fill(matrices, 0, 0, scaledWidth, l, -90, 0xFF000000);
-		DrawableHelper.fill(matrices, 0, l, k, n, -90, 0xFF000000);
-		DrawableHelper.fill(matrices, m, l, scaledWidth, n, -90, 0xFF000000);
+		DrawableHelper.fill(matrices, 0, n, scaledWidth, scaledHeight, 0xFF000000);
+		DrawableHelper.fill(matrices, 0, 0, scaledWidth, l, -0xFF000000);
+		DrawableHelper.fill(matrices, 0, l, k, n, 0xFF000000);
+		DrawableHelper.fill(matrices, m, l, scaledWidth, n, 0xFF000000);
 		RenderSystem.depthMask(true);
 		RenderSystem.enableDepthTest();
     }
