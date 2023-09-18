@@ -1,6 +1,6 @@
 package io.github.ennuil.libzoomer.impl;
 
-import io.github.ennuil.libzoomer.LibZoomerForge;
+import io.github.ennuil.libzoomer.ZoomerLibrary;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 
@@ -15,5 +15,5 @@ public class SpyglassHelper {
     /**
      * The spyglass tag, which is used internally in order to unhardcode behavior specific to vanilla spyglasses
      */
-    public static final TagKey<Item> SPYGLASSES = TagKey.of(RegistryKeys.ITEM, new Identifier(LibZoomerForge.MODID, "spyglasses"));
+    public static final TagKey<Item> SPYGLASSES = TagKey.of(RegistryKeys.ITEM, new Identifier(ZoomerLibrary.MODID, "spyglasses"));
 }

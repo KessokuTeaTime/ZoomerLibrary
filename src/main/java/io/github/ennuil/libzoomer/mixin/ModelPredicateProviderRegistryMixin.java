@@ -1,6 +1,6 @@
 package io.github.ennuil.libzoomer.mixin;
 
-import io.github.ennuil.libzoomer.LibZoomerForge;
+import io.github.ennuil.libzoomer.ZoomerLibrary;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 public abstract class ModelPredicateProviderRegistryMixin {
 	@Inject(method = "<clinit>", at = @At("TAIL"))
 	private static void addScopingPredicateToModdedSpyglasses(CallbackInfo ci) {
-		ModelPredicateProviderRegistry.registerGeneric(new Identifier(LibZoomerForge.MODID, "scoping"), (stack, clientWorld, entity, i) ->
+		ModelPredicateProviderRegistry.registerGeneric(new Identifier(ZoomerLibrary.MODID, "scoping"), (stack, clientWorld, entity, i) ->
 			entity != null
 				&& entity.isUsingItem()
 				&& entity.getActiveItem() == stack

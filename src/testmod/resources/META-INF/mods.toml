@@ -3,7 +3,7 @@ loaderVersion = "[46,)"
 license = "MIT"
 
 [[mods]]
-modId = "libzoomer_test"
+modId = "zoomerlibrary_test"
 version = "${version}"
 displayName = "ZoomerLibraryTest"
 displayURL="https://github.com/ThinkingStudios/ZoomerLibrary" #optional
@@ -16,16 +16,23 @@ LibZoomer unofficial forge port.
 A library that allows for easy and powerful zooming.
 '''
 
-[[dependencies.libzoomer_test]]
+[[dependencies.zoomerlibrary_test]]
 modId = "forge"
 mandatory = true
 versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.libzoomer_test]]
+[[dependencies.zoomerlibrary_test]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20,]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.zoomerlibrary_test]]
+modId = "zoomerlibrary"
+mandatory = true
+versionRange = "*"
 ordering = "NONE"
 side = "BOTH"

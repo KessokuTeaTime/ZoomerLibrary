@@ -26,11 +26,11 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-@Mod(LibZoomerTestMod.MODID)
-public class LibZoomerTestMod {
-	public static final String MODID = "libzoomer_test";
+@Mod(ZoomerLibraryTestMod.MODID)
+public class ZoomerLibraryTestMod {
+	public static final String MODID = "zoomerlibrary_test";
 
-	public LibZoomerTestMod() {
+	public ZoomerLibraryTestMod() {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		modEventBus.addListener(this::onInitialize);
@@ -78,7 +78,7 @@ public class LibZoomerTestMod {
 	}
 
 	@SubscribeEvent
-	public void registerKeys(final RegisterKeyMappingsEvent event) {
+	public void registerKeys(RegisterKeyMappingsEvent event) {
 		event.register(MICHELLE_KEY);
 	}
 
