@@ -8,7 +8,7 @@ import org.thinkingstudio.zoomerlibrary.api.TransitionMode;
  * An implementation of Ok Zoomer's smooth transitions (and Vanilla's spyglass zoom) as a transition mode
  */
 public class SmoothTransitionMode implements TransitionMode {
-	private static final Identifier TRANSITION_ID = new Identifier("libzoomer:smooth_transition");
+	private static final Identifier TRANSITION_ID = new Identifier("zoomerlibrary:smooth_transition");
 	private boolean active;
 	private final float smoothMultiplier;
 	private double fovMultiplier;

@@ -8,7 +8,7 @@ import org.thinkingstudio.zoomerlibrary.api.MouseModifier;
  * A mouse modifier that contains multiple mouse modifiers.
  */
 public class ContainingMouseModifier implements MouseModifier {
-	private static final Identifier MODIFIER_ID = new Identifier("libzoomer:modifier_container");
+	private static final Identifier MODIFIER_ID = new Identifier("zoomerlibrary:modifier_container");
 	private final MouseModifier[] modifiers;
 	private boolean active;
 

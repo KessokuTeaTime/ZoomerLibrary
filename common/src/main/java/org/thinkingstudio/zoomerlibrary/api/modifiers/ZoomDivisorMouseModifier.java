@@ -7,7 +7,7 @@ import org.thinkingstudio.zoomerlibrary.api.MouseModifier;
  * A mouse modifier which reduces the cursor sensitivity with the transition mode's internal multiplier
  */
 public class ZoomDivisorMouseModifier implements MouseModifier {
-	private static final Identifier MODIFIER_ID = new Identifier("libzoomer:zoom_divisor");
+	private static final Identifier MODIFIER_ID = new Identifier("zoomerlibrary:zoom_divisor");
 	private boolean active;
 
 	/**

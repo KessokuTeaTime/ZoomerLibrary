@@ -11,7 +11,7 @@ import org.thinkingstudio.zoomerlibrary.api.ZoomOverlay;
  * An implementation of the spyglass overlay as a zoom overlay
  */
 public class SpyglassZoomOverlay implements ZoomOverlay {
-    private static final Identifier OVERLAY_ID = new Identifier("libzoomer:spyglass_zoom");
+    private static final Identifier OVERLAY_ID = new Identifier("zoomerlibrary:spyglass_zoom");
     private final Identifier textureId;
     private MinecraftClient client;
     private float scale;

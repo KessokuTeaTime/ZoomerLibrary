@@ -7,7 +7,7 @@ import org.thinkingstudio.zoomerlibrary.api.TransitionMode;
  * An implementation of a simple zoom as a transition mode.
  */
 public class InstantTransitionMode implements TransitionMode {
-	private static final Identifier TRANSITION_ID = new Identifier("libzoomer:no_transition");
+	private static final Identifier TRANSITION_ID = new Identifier("zoomerlibrary:no_transition");
 	private boolean active;
 	private double divisor;
 

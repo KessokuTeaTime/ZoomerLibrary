@@ -9,7 +9,7 @@ import org.thinkingstudio.zoomerlibrary.api.MouseModifier;
  * An implemenation of Vanilla's Cinematic Camera as a mouse modifier.
  */
 public class CinematicCameraMouseModifier implements MouseModifier {
-	private static final Identifier MODIFIER_ID = new Identifier("libzoomer:cinematic_camera");
+	private static final Identifier MODIFIER_ID = new Identifier("zoomerlibrary:cinematic_camera");
 	private boolean active;
 	private MinecraftClient client;
 	private boolean cinematicCameraEnabled;

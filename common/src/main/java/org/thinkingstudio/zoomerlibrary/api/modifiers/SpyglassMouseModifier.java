@@ -7,7 +7,7 @@ import org.thinkingstudio.zoomerlibrary.api.MouseModifier;
  * An implementation of the spyglass' reduction of the mouse sensitivity as a mouse modifier
 */
 public class SpyglassMouseModifier implements MouseModifier {
-	private static final Identifier MODIFIER_ID = new Identifier("libzoomer:spyglass");
+	private static final Identifier MODIFIER_ID = new Identifier("zoomerlibrary:spyglass");
 	private boolean active;
 
 	/**
