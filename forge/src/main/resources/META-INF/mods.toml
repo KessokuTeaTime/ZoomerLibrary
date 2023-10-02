@@ -32,6 +32,6 @@ side = "BOTH"
 [[dependencies.zoomerlibrary]]
 modId = "architectury"
 mandatory = true
-versionRange = "[9,)"
+versionRange = "*"
 ordering = "AFTER"
 side = "BOTH"
