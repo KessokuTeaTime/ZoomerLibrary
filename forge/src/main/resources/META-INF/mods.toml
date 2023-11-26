@@ -11,6 +11,8 @@ displayURL = "https://github.com/ThinkingStudios/ZoomerLibrary"
 authors = "ThinkingStudio, TexTrue"
 credits = "Ennui Langeweile"
 description = '''
+LibZoomer unofficial Architectury port.
+
 A library that allows for easy and powerful zooming.
 '''
 logoFile = "icon.png"
