@@ -1,6 +1,6 @@
 # ZoomerLibrary
 
-LibZoomer unofficial forge port.
+LibZoomer unofficial architectury port.
 
 A library that allows other mods to create zooms and custom spyglasses easily.
 
@@ -18,7 +18,7 @@ A better guide will be written later, feel free to take a look on this mod's tes
 
 This mod is meant to be JiJ'd by mods, so you wouldn't need to download it at all in most cases. If you really need to download it, it's available in the following services:
 
-- [GitHub Releases (alternative)](https://github.com/ThinkingStudios/ZoomerLibrary/releases)
+- [GitHub Releases (alternative)](https://github.com/KessokuTeaTime/ZoomerLibrary/releases)
 
 ## License
 

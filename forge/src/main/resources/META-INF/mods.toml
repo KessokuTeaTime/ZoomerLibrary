@@ -1,13 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[46,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/KessokuTeaTime/ZoomerLibrary/issues"
 license = "MIT"
 
 [[mods]]
 modId = "zoomerlibrary"
 version = "${version}"
 displayName = "ZoomerLibrary"
-displayURL = "https://github.com/ThinkingStudios/ZoomerLibrary"
+displayURL = "https://github.com/KessokuTeaTime/ZoomerLibrary"
 authors = "ThinkingStudio, TexTrue"
 credits = "Ennui Langeweile"
 description = '''

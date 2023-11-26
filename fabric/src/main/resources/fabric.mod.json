@@ -8,8 +8,8 @@
     "ThinkingStudio", "TexTrue", "Ennui Langeweile"
   ],
   "contact": {
-    "homepage": "https://github.com/ThinkingStudios/ZoomerLibrary",
-    "sources": "https://github.com/ThinkingStudios/ZoomerLibrary"
+    "sources": "https://github.com/KessokuTeaTime/ZoomerLibrary",
+		"issues": "https://github.com/KessokuTeaTime/ZoomerLibrary/issues"
   },
   "license": "MIT",
   "icon": "icon.png",
