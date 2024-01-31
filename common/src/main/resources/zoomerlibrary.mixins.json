@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "band.kessokuteatime.zoomerlibrary.mixin",
+  "package": "org.thinkingstudio.zoomerlibrary.mixin",
 	"minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "client": [

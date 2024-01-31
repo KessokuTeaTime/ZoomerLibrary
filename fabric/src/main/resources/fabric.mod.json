@@ -16,7 +16,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-			"band.kessokuteatime.zoomerlibrary.fabric.ZoomerLibraryFabric"
+			"org.thinkingstudio.zoomerlibrary.fabric.ZoomerLibraryFabric"
     ]
   },
   "depends": {
