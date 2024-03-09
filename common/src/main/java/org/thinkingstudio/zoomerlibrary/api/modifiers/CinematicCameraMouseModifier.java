@@ -58,7 +58,7 @@ public class CinematicCameraMouseModifier implements MouseModifier {
 	public void tick(boolean active) {
 		this.ensureClient();
 		this.cinematicCameraEnabled = this.client.options.cinematicCamera;
-		if (!active && active != this.active) {
+		if (!active && this.active) {
 			this.cursorXZoomSmoother.clear();
 			this.cursorYZoomSmoother.clear();
 		}

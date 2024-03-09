@@ -1,2 +1,2 @@
 ## Changelog
-- change package name
+- sync upstream

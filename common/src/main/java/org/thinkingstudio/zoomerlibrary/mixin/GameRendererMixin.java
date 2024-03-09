@@ -12,7 +12,6 @@ import org.thinkingstudio.zoomerlibrary.api.ZoomRegistry;
 
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
-
 	@Inject(method = "tick()V", at = @At("HEAD"))
 	private void tickInstances(CallbackInfo info) {
 		boolean iterateZoom = false;
@@ -22,12 +21,15 @@ public class GameRendererMixin {
 
 		for (ZoomInstance instance : ZoomRegistry.getZoomInstances()) {
 			boolean zoom = instance.getZoom();
-			if (zoom || (instance.isTransitionActive() || instance.isOverlayActive())) {
+			if (zoom || (instance.isTransitionActive() || instance.isModifierActive() || instance.isOverlayActive())) {
 				double divisor = zoom ? instance.getZoomDivisor() : 1.0;
+				instance.getTransitionMode().tick(zoom, divisor);
+				if (instance.getMouseModifier() != null) {
+					instance.getMouseModifier().tick(zoom);
+				}
 				if (instance.getZoomOverlay() != null) {
 					instance.getZoomOverlay().tick(zoom, divisor, instance.getTransitionMode().getInternalMultiplier());
 				}
-				instance.getTransitionMode().tick(zoom, divisor);
 			}
 
 			iterateZoom = iterateZoom || zoom;
