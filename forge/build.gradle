@@ -4,34 +4,29 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    forge()
+    neoForge()
 }
 
-loom {
-    forge {
-        mixinConfig "zoomerlibrary.mixins.json"
-    }
-}
-
-project.archivesBaseName = rootProject.archivesBaseName + "-forge"
+project.archivesBaseName = rootProject.archivesBaseName + "-neoforge"
 
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentNeoForge.extendsFrom common
+}
+
+repositories {
+	maven { url = "https://maven.neoforged.net/releases/" }
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
-
-	compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.5"))
-	implementation(include("io.github.llamalad7:mixinextras-forge:0.3.5"))
+	neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
+    modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 processResources {
@@ -74,7 +69,7 @@ components.java {
 
 publishing {
     publications {
-        mavenForge(MavenPublication) {
+        mavenNeoForge(MavenPublication) {
             artifactId = rootProject.archives_base_name + "-" + project.name
             from components.java
         }
@@ -104,10 +99,10 @@ publisher {
 	setModrinthID("${project.modrinth_id}")
 	setVersionType("alpha")
 	setChangelog(file("CHANGELOG.md").getText("UTF-8"))
-	setVersion("${project.version}-forge")
-	setDisplayName("[Forge] ${project.version}")
-	setGameVersions("1.20", "1.20.1")
-	setLoaders("forge")
+	setVersion("${project.version}-neoforge")
+	setDisplayName("[NeoForge] ${project.version}")
+	setGameVersions("1.20.3", "1.20.4")
+	setLoaders("neoforge")
 	setArtifact(remapJar)
 	addAdditionalFile(sourcesJar)
 }

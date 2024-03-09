@@ -7,7 +7,7 @@ import org.thinkingstudio.zoomerlibrary.api.ZoomInstance;
 import org.thinkingstudio.zoomerlibrary.api.ZoomOverlay;
 import org.thinkingstudio.zoomerlibrary.api.ZoomRegistry;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.gui.hud.in_game.InGameHud;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

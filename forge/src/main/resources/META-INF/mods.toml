@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[46,)"
+loaderVersion = "[1,)"
 issueTrackerURL = "https://github.com/KessokuTeaTime/ZoomerLibrary/issues"
 license = "MIT"
 
@@ -17,17 +17,20 @@ A library that allows for easy and powerful zooming.
 '''
 logoFile = "icon.png"
 
+[[mixins]]
+config = "zoomerlibrary.mixins.json"
+
 [[dependencies.zoomerlibrary]]
-modId = "forge"
+modId = "neoforge"
 mandatory = true
-versionRange = "[46,)"
+versionRange = "[20,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.zoomerlibrary]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20,)"
+versionRange = "[1.20.3,)"
 ordering = "NONE"
 side = "BOTH"
 
