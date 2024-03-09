@@ -1,2 +1,2 @@
 ## Changelog
-- sync upstream
+- update to 1.20.4
