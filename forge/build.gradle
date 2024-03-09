@@ -106,7 +106,7 @@ publisher {
 	setChangelog(file("CHANGELOG.md").getText("UTF-8"))
 	setVersion("${project.version}-forge")
 	setDisplayName("[Forge] ${project.version}")
-	setGameVersions("1.20", "1.20.1")
+	setGameVersions("1.19", "1.19.1", "1.19.2")
 	setLoaders("forge")
 	setArtifact(remapJar)
 	addAdditionalFile(sourcesJar)

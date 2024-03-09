@@ -1,6 +1,6 @@
 package org.thinkingstudio.zoomerlibrary.api;
 
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 /**
@@ -32,9 +32,9 @@ public interface ZoomOverlay {
 	/**
 	 * Renders the overlay itself. It's injected by LibZoomer itself.
 	 *
-	 * @param graphics the in-game HUD's graphics
+	 * @param matrices the in-game HUD's graphics
 	 */
-	void renderOverlay(GuiGraphics graphics);
+	void renderOverlay(MatrixStack matrices);
 
 	/**
 	 * The tick method. Used in order to keep the internal variables accurate and the overlay functional.
