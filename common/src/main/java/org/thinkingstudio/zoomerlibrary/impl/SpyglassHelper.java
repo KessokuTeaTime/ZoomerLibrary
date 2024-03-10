@@ -2,7 +2,6 @@ package org.thinkingstudio.zoomerlibrary.impl;
 
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import org.thinkingstudio.zoomerlibrary.ZoomerLibrary;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;

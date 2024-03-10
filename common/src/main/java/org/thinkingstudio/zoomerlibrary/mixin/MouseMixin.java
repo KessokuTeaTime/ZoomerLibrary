@@ -2,6 +2,7 @@ package org.thinkingstudio.zoomerlibrary.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalDoubleRef;
+import org.objectweb.asm.Opcodes;
 import org.thinkingstudio.zoomerlibrary.api.ZoomInstance;
 import org.thinkingstudio.zoomerlibrary.api.ZoomRegistry;
 import net.minecraft.client.Mouse;
@@ -17,7 +18,8 @@ public abstract class MouseMixin {
 		method = "updateLookDirection()V",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/client/option/GameOptions;getInvertYMouse()Lnet/minecraft/client/option/Option;"
+			target = "net/minecraft/client/option/GameOptions.invertYMouse:Z",
+			opcode = Opcodes.GETFIELD
 		),
 		locals = LocalCapture.CAPTURE_FAILHARD
 	)
